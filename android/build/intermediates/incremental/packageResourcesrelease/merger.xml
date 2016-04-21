@@ -1,2 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/Development/react-native-image-picker/android/src/main/res"/><source path="/Development/react-native-image-picker/android/build/generated/res/rs/release"/><source path="/Development/react-native-image-picker/android/build/generated/res/resValues/release"/></dataSet><dataSet config="release"><source path="/Development/react-native-image-picker/android/src/release/res"/></dataSet><mergedItems/></merger>
