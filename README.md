@@ -29,7 +29,8 @@ A cross-platform bridge that allows you to enable and disable the screen idle ti
 3. and finally, in `android/src/main/java/com/{YOUR_APP_NAME}/MainActivity.java` add:
    ```java
    //...
-   import com.marcshilling.idletimer; // <--- This!
+   import com.marcshilling.idletimer.IdleTimerPackage;; // <--- This!
+   
    //...
    @Override
    protected List<ReactPackage> getPackages() {
