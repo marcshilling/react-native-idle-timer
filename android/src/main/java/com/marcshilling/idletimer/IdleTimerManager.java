@@ -1,4 +1,4 @@
-package com.discovery.DiscoveryVR.Modules.IdleTimer;
+package com.marcshilling.idletimer;
 
 import android.app.Activity;
 import android.view.WindowManager;

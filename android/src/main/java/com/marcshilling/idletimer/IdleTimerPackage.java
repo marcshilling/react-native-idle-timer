@@ -1,4 +1,4 @@
-package com.discovery.DiscoveryVR.Modules.IdleTimer;
+package com.marcshilling.idletimer;
 
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.JavaScriptModule;
