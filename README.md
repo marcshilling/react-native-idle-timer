@@ -1,11 +1,46 @@
 # react-native-idle-timer
-An Objective-C bridge that allows you to enable and disable the screen idle timer in your React Native app
+A cross-platform bridge that allows you to enable and disable the screen idle timer in your React Native app
 
 ## Install
-1. `npm install react-native-idle-timer@latest --save`
-2. In the XCode's "Project navigator", right click on your project's Libraries folder ➜ `Add Files to <...>`
-3. Go to `node_modules` ➜ `react-native-idle-timer` ➜ select the `IdleTimerManager` folder
-4. Make sure `IdleTimerManager.m` is listed under 'Compile Sources' in your project's 'Build Phases' tab
+`npm install react-native-idle-timer@latest --save`
+
+#### iOS
+1. In the XCode's "Project navigator", right click on your project's Libraries folder ➜ `Add Files to <...>`
+2. Go to `node_modules` ➜ `react-native-idle-timer` ➜ `ios` ➜ select `RNIdleTimer.xcodeproj`
+3. Add `libRNIdleTimer.a` to `Build Phases -> Link Binary With Libraries`
+
+
+#### Android
+
+1. in `android/settings.gradle`
+   ```
+   ...
+   include ':react-native-idle-timer'
+   project(':react-native-idle-timer').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-idle-timer/android')
+   ```
+
+2. in `android/app/build.gradle` add:
+   ```
+   dependencies {
+       ...
+       compile project(':react-native-idle-timer')
+   }
+   ```
+
+3. and finally, in `android/src/main/java/com/{YOUR_APP_NAME}/MainActivity.java` add:
+   ```java
+   //...
+   import com.marcshilling.idletimer.IdleTimerPackage;; // <--- This!
+   
+   //...
+   @Override
+   protected List<ReactPackage> getPackages() {
+     return Arrays.<ReactPackage>asList(
+       new MainReactPackage(),
+       new IdleTimerPackage() // <---- and This!
+     );
+}
+   ```
 
 ## Usage
 1. In your React Native javascript code, bring in the native module:
