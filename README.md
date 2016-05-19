@@ -46,7 +46,7 @@ A cross-platform bridge that allows you to enable and disable the screen idle ti
 1. In your React Native javascript code, bring in the native module:
 
   ```javascript
-var IdleTimerManager = require('NativeModules').IdleTimerManager;
+import IdleTimerManager from 'react-native-idle-timer';
   ```
 2. To disable the idle timer on a specific view component:
   

@@ -19,5 +19,6 @@
     "timer",
     "dim"
   ],
-  "nativePackage": true
+  "nativePackage": true,
+  "main": "index.js"
 }
