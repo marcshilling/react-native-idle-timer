@@ -5,17 +5,17 @@ A cross-platform bridge that allows you to enable and disable the screen idle ti
 `npm install react-native-idle-timer@latest --save`
 
 ## Configure
-### with RNPM
+#### With rnpm
 `rnpm link react-native-idle-timer`
 
-### Manually
-#### iOS
+#### Manually
+##### iOS
 1. In the XCode's "Project navigator", right click on your project's Libraries folder ➜ `Add Files to <...>`
 2. Go to `node_modules` ➜ `react-native-idle-timer` ➜ `ios` ➜ select `RNIdleTimer.xcodeproj`
 3. Add `libRNIdleTimer.a` to `Build Phases -> Link Binary With Libraries`
 
 
-#### Android
+##### Android
 
 1. in `android/settings.gradle`
    ```
