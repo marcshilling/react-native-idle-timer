@@ -4,9 +4,9 @@
     "type": "git",
     "url": "https://github.com/marcshilling/react-native-idle-timer"
   },
-  "version": "2.0.2",
+  "version": "2.1.0",
   "author": "Marc Shilling (marcshilling)",
-  "description": "An Objective-C bridge that allows you to enable and disable the screen idle timer in your React Native app",
+  "description": "A cross-platform bridge that allows you to enable and disable the screen idle timer in your React Native app",
   "keywords": [
     "react-native",
     "react-native-idle-timer",
