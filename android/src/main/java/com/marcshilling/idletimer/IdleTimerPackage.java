@@ -11,6 +11,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class IdleTimerPackage implements ReactPackage {
+
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
         return Arrays.<NativeModule>asList(
@@ -18,7 +19,8 @@ public class IdleTimerPackage implements ReactPackage {
         );
     }
 
-    @Override
+    // Deprecated in React Native 0.47.0
+    // @Override
     public List<Class<? extends JavaScriptModule>> createJSModules() {
         return Collections.emptyList();
     }
