@@ -20,5 +20,6 @@
     "dim"
   ],
   "nativePackage": true,
-  "main": "index.js"
+  "main": "index.js",
+  "types": "index.d.ts"
 }
