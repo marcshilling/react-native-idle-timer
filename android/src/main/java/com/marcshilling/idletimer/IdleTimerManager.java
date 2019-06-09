@@ -6,9 +6,12 @@ import android.view.WindowManager;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.module.annotations.ReactModule;
 
+@ReactModule(name = IdleTimerManager.MODULE_NAME)
 public class IdleTimerManager extends ReactContextBaseJavaModule
 {
+    static final String MODULE_NAME = "IdleTimerManager";
 
     public IdleTimerManager(ReactApplicationContext reactContext) {
         super(reactContext);
@@ -16,7 +19,7 @@ public class IdleTimerManager extends ReactContextBaseJavaModule
 
     @Override
     public String getName() {
-        return "IdleTimerManager";
+        return this.MODULE_NAME;
     }
 
     @ReactMethod
