@@ -10,7 +10,7 @@ A cross-platform bridge that allows you to enable and disable the screen idle ti
 
 #### Automatically
 
-`react-native link`
+`react-native link react-native-idle-timer`
 
 #### Manually
 
