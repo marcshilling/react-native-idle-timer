@@ -6,6 +6,7 @@
   },
   "version": "2.1.6",
   "author": "Marc Shilling (marcshilling)",
+  "license": "MIT",
   "description": "A cross-platform bridge that allows you to enable and disable the screen idle timer in your React Native app",
   "keywords": [
     "react-native",
