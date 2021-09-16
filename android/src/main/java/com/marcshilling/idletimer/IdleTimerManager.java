@@ -1,14 +1,16 @@
 package com.marcshilling.idletimer;
 
+import com.facebook.react.bridge.NativeModule;
+import com.facebook.react.bridge.ReactApplicationContext;
+import com.facebook.react.bridge.ReactContext;
+import com.facebook.react.bridge.ReactContextBaseJavaModule;
+import com.facebook.react.bridge.ReactMethod;
+import java.util.Map;
+import java.util.HashMap;
+
 import android.app.Activity;
 import android.view.WindowManager;
 
-import com.facebook.react.bridge.ReactApplicationContext;
-import com.facebook.react.bridge.ReactContextBaseJavaModule;
-import com.facebook.react.bridge.ReactMethod;
-import com.facebook.react.module.annotations.ReactModule;
-
-@ReactModule(name = IdleTimerManager.MODULE_NAME)
 public class IdleTimerManager extends ReactContextBaseJavaModule
 {
     static final String MODULE_NAME = "IdleTimerManager";
