@@ -38,7 +38,7 @@ dependencies {
 }
 ```
 
-3. and finally, in `android/src/main/java/com/{YOUR_APP_NAME}/MainActivity.java` add:
+3. and finally, in `android/src/main/java/com/{YOUR_APP_NAME}/MainApplication.java` add:
 
 ```java
 //...
