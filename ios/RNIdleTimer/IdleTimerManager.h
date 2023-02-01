@@ -7,4 +7,7 @@
 
 @interface IdleTimerManager : NSObject <RCTBridgeModule>
 
++ (void)activate:(NSString*)tag;
++ (void)deactivate:(NSString*)tag;
+
 @end
