@@ -76,13 +76,28 @@ protected List<ReactPackage> getPackages() {
 
 1. Sometimes you want to disable the idle timer in multiple places, for example, both parent and child component disable and enable the idle timer on mount and unmoumt respectively. When the child component unmount, you expect the idle timer should still disable. The fact is the idle timer get enabled. Because of that, you need to scope it.
 
-    ```javascript
-    useEffect(() => {
-      IdleTimerManager.setIdleTimerDisabled(true, "<any name you want>");
-      return () => {
-        IdleTimerManager.setIdleTimerDisabled(false, "<any name you want>");
-      }
-    }, []);
+    ```jsx
+    function Parent() {
+      useEffect(() => {
+        IdleTimerManager.setIdleTimerDisabled(true, "parent");
+        return () => {
+          IdleTimerManager.setIdleTimerDisabled(false, "parent");
+        }
+      }, []);
+
+      return <Child />
+    }
+
+    function Child() {
+      useEffect(() => {
+        IdleTimerManager.setIdleTimerDisabled(true, "child");
+        return () => {
+          IdleTimerManager.setIdleTimerDisabled(false, "child");
+        }
+      }, []);
+
+      return null;
+    }
     ```
 
 1. If you have multiple places set the idle time on native side, you will have the previous issue. Because of that, this library provides a centralized way to enable and disable the idle timer
