@@ -58,40 +58,43 @@ protected List<ReactPackage> getPackages() {
 
 1. In your React Native javascript code, bring in the native module:
 
-```javascript
-import IdleTimerManager from 'react-native-idle-timer';
-```
+    ```javascript
+    import IdleTimerManager from 'react-native-idle-timer';
+    ```
 
 1. To disable the idle timer on a specific view component:
 
-```javascript
-componentWillMount() {
-  IdleTimerManager.setIdleTimerDisabled(true);
-}
+    ```javascript
+    componentWillMount() {
+      IdleTimerManager.setIdleTimerDisabled(true);
+    }
 
-componentWillUnmount() {
-  IdleTimerManager.setIdleTimerDisabled(false);
-}
-```
+    componentWillUnmount() {
+      IdleTimerManager.setIdleTimerDisabled(false);
+    }
+    ```
 
 1. Sometimes you want to disable the idle timer in multiple places, for example, both parent and child component disable and enable the idle timer on mount and unmoumt respectively. When the child component unmount, you expect the idle timer should still disable. The fact is the idle timer get enabled. Because of that, you need to scope it.
 
-```javascript
-IdleTimerManager.setIdleTimerDisabled(true, "<any name you want>");
+    ```javascript
+    useEffect(() => {
+      IdleTimerManager.setIdleTimerDisabled(true, "<any name you want>");
+      return () => {
+        IdleTimerManager.setIdleTimerDisabled(false, "<any name you want>");
+      }
+    }, []);
+    ```
 
-IdleTimerManager.setIdleTimerDisabled(false, "<any name you want>");
-```
+1. If you have multiple places set the idle time on native side, you will have the previous issue. Because of that, this library provides a centralized way to enable and disable the idle timer
 
-1. If you have multiple places set the idle time on native side, you will have the previous issue. Because of that, this library provide a centralized way to enable and able the idle timer
+    ```java
+    IdleTimerManager.activate(activity, "<any name you want>");
 
-```java
-IdleTimerManager.activate(activity, "<any name you want>");
+    IdleTimerManager.deactivate(activity, "<any name you want>");
+    ```
 
-IdleTimerManager.deactivate(activity, "<any name you want>");
-```
+    ```objectivec
+    [IdleTimerManager activate:@"<any name you want>"];
 
-```objc
-[IdleTimerManager activate:@"<any name you want>"];
-
-[IdleTimerManager deactivate:@"<any name you want>"];
-```
+    [IdleTimerManager deactivate:@"<any name you want>"];
+    ```
