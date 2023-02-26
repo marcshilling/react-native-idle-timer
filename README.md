@@ -56,60 +56,59 @@ protected List<ReactPackage> getPackages() {
 
 ## Usage
 
-1. In your React Native javascript code, bring in the native module:
+### In your React Native javascript code, bring in the native module:
 
-    ```javascript
-    import IdleTimerManager from 'react-native-idle-timer';
-    ```
+```javascript
+import IdleTimerManager from 'react-native-idle-timer';
+```
+<br/>
 
-1. To disable the idle timer on a specific view component:
+### To disable the idle timer while a certain component is mounted:
 
-    ```javascript
-    componentWillMount() {
-      IdleTimerManager.setIdleTimerDisabled(true);
-    }
+Class component
+```javascript
+componentWillMount() {
+  IdleTimerManager.setIdleTimerDisabled(true);
+}
 
-    componentWillUnmount() {
-      IdleTimerManager.setIdleTimerDisabled(false);
-    }
-    ```
+componentWillUnmount() {
+  IdleTimerManager.setIdleTimerDisabled(false);
+}
+```
 
-1. Sometimes you want to disable the idle timer in multiple places, for example, both parent and child component disable and enable the idle timer on mount and unmoumt respectively. When the child component unmount, you expect the idle timer should still disable. The fact is the idle timer get enabled. Because of that, you need to scope it.
 
-    ```jsx
-    function Parent() {
-      useEffect(() => {
-        IdleTimerManager.setIdleTimerDisabled(true, "parent");
-        return () => {
-          IdleTimerManager.setIdleTimerDisabled(false, "parent");
-        }
-      }, []);
+Function component
 
-      return <Child />
-    }
+```javascript
+useEffect(() => {
+  IdleTimerManager.setIdleTimerDisabled(true);
 
-    function Child() {
-      useEffect(() => {
-        IdleTimerManager.setIdleTimerDisabled(true, "child");
-        return () => {
-          IdleTimerManager.setIdleTimerDisabled(false, "child");
-        }
-      }, []);
+  return () => IdleTimerManager.setIdleTimerDisabled(false);
+}, [])
+```
+<br/>
 
-      return null;
-    }
-    ```
+### If you have multiple components that are responsible for interacting with the idle timer, you can pass a tag as the second parameter:
 
-1. If you have multiple places set the idle time on native side, you will have the previous issue. Because of that, this library provides a centralized way to enable and disable the idle timer
+```javascript
+useEffect(() => {
+  IdleTimerManager.setIdleTimerDisabled(true, "video");
 
-    ```java
-    IdleTimerManager.activate(activity, "<any name you want>");
+  return () => IdleTimerManager.setIdleTimerDisabled(false, "video");
+}, [])
+```
+<br/>
 
-    IdleTimerManager.deactivate(activity, "<any name you want>");
-    ```
+### If you need to interact from the native Android or iOS side:
 
-    ```objectivec
-    [IdleTimerManager activate:@"<any name you want>"];
+Android
+```java
+IdleTimerManager.activate(activity, "video");
+IdleTimerManager.deactivate(activity, "video");
+```
 
-    [IdleTimerManager deactivate:@"<any name you want>"];
-    ```
+iOS
+```objectivec
+[IdleTimerManager activate:@"video"];
+[IdleTimerManager deactivate:@"video"];
+```
