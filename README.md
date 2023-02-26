@@ -56,14 +56,16 @@ protected List<ReactPackage> getPackages() {
 
 ## Usage
 
-1. In your React Native javascript code, bring in the native module:
+### In your React Native javascript code, bring in the native module:
 
 ```javascript
 import IdleTimerManager from 'react-native-idle-timer';
 ```
+<br/>
 
-2. To disable the idle timer on a specific view component:
+### To disable the idle timer while a certain component is mounted:
 
+Class component
 ```javascript
 componentWillMount() {
   IdleTimerManager.setIdleTimerDisabled(true);
@@ -72,4 +74,41 @@ componentWillMount() {
 componentWillUnmount() {
   IdleTimerManager.setIdleTimerDisabled(false);
 }
+```
+
+
+Function component
+
+```javascript
+useEffect(() => {
+  IdleTimerManager.setIdleTimerDisabled(true);
+
+  return () => IdleTimerManager.setIdleTimerDisabled(false);
+}, [])
+```
+<br/>
+
+### If you have multiple components that are responsible for interacting with the idle timer, you can pass a tag as the second parameter:
+
+```javascript
+useEffect(() => {
+  IdleTimerManager.setIdleTimerDisabled(true, "video");
+
+  return () => IdleTimerManager.setIdleTimerDisabled(false, "video");
+}, [])
+```
+<br/>
+
+### If you need to interact from the native Android or iOS side:
+
+Android
+```java
+IdleTimerManager.activate(activity, "video");
+IdleTimerManager.deactivate(activity, "video");
+```
+
+iOS
+```objectivec
+[IdleTimerManager activate:@"video"];
+[IdleTimerManager deactivate:@"video"];
 ```
