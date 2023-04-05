@@ -1,4 +1,4 @@
 declare namespace RNIdleTimer {
-  function setIdleTimerDisabled(disabled: boolean, tag: string | undefined): void;
+  function setIdleTimerDisabled(disabled: boolean, tag?: string): void;
 }
-export = RNIdleTimer
+export = RNIdleTimer;

@@ -4,7 +4,7 @@ A cross-platform bridge that allows you to enable and disable the screen idle ti
 
 ## Install
 
-`npm install react-native-idle-timer@latest --save`
+`yarn add react-native-idle-timer`
 
 ## Link
 
