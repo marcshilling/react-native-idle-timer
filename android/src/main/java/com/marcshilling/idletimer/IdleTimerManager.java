@@ -29,10 +29,12 @@ public class IdleTimerManager extends ReactContextBaseJavaModule
     @ReactMethod
     public void setIdleTimerDisabled(final boolean disabled, final String tag) {
         final Activity activity = this.getCurrentActivity();
-        if (disabled) {
-            activate(activity, tag);
-        } else {
-            deactivate(activity, tag);
+        if (activity != null) {
+            if (disabled) {
+                activate(activity, tag);
+            } else {
+                deactivate(activity, tag);
+            }
         }
     }
 
@@ -46,7 +48,7 @@ public class IdleTimerManager extends ReactContextBaseJavaModule
     }
 
     public static void deactivate(@NotNull final Activity activity, final String tag) {
-        if (tags.size() == 1 && tags.contains((tag))) {
+        if (tags.size() == 1 && tags.contains((tag == null ? "" : tag))) {
             activity.runOnUiThread(() -> {
                 activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
             });
