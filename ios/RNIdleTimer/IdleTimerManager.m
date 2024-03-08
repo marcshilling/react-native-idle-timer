@@ -32,7 +32,7 @@ RCT_EXPORT_METHOD(setIdleTimerDisabled:(BOOL)disabled tag:(NSString *)tag) {
 }
 
 + (void)deactivate:(NSString*)tag {
-    if ([tags count] == 1 && [tags containsObject:tag]) {
+    if ([tags count] == 1 && [tags containsObject:tag ?: @""]) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [UIApplication sharedApplication].idleTimerDisabled = NO;
         });
