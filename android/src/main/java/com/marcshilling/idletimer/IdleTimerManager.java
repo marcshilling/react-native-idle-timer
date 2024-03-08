@@ -44,15 +44,15 @@ public class IdleTimerManager extends ReactContextBaseJavaModule
                 activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
             });
         }
-        tags.add((tag == null ? "" : tag));
+        tags.add(tag == null ? "" : tag);
     }
 
     public static void deactivate(@NotNull final Activity activity, final String tag) {
-        if (tags.size() == 1 && tags.contains((tag == null ? "" : tag))) {
+        if (tags.size() == 1 && tags.contains(tag == null ? "" : tag)) {
             activity.runOnUiThread(() -> {
                 activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
             });
         }
-        tags.remove((tag == null ? "" : tag));
+        tags.remove(tag == null ? "" : tag);
     }
 }
