@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.source         = { :git => 'https://github.com/marcshilling/react-native-idle-timer.git', :tag => s.version }
 
   s.requires_arc   = true
-  s.platform       = :ios, '7.0'
+  s.platforms      = { ios: '7.0', tvos: '9.0' }
 
   s.preserve_paths = 'README.md', 'package.json', 'index.js'
   s.source_files   = 'ios/RNIdleTimer/*.{h,m}'
