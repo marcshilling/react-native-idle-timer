@@ -2,7 +2,7 @@ buildscript {
     if (project == rootProject) {
         repositories {
             google()
-            jcenter()
+            mavenCentral()
         }
 
         dependencies {
@@ -56,7 +56,7 @@ repositories {
         url("$rootDir/../node_modules/react-native/android")
     }
     google()
-    jcenter()
+    mavenCentral()
 }
 
 dependencies {
